@@ -1,6 +1,6 @@
 <?php
 
-require_once 'User.php';
+require_once '../User.php';
 
 class UserLogin extends User
 {
@@ -8,13 +8,13 @@ class UserLogin extends User
     public $pass;
     public $sconto = 20;
 
-    public function __construct($f_name, $l_name, $age, $email, $pass)
+    public function __construct($f_name, $l_name, $age, $credit_card, $email, $pass)
     {
-        parent::__construct($f_name, $l_name, $age);
+        parent::__construct($f_name, $l_name, $age, $credit_card);
         $this->email = $email;
         $this->pass = $pass;
     }
 }
 
-$user1Login = new UserLogin('Matteo', 'Filippini', 10, 'email', 'pass');
-var_dump($user1Login);
+$user_login = new UserLogin('Luca', 'Scandi', 40, 'email', 'pass', $credit_card_login);
+var_dump($user_login);
