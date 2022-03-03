@@ -1,6 +1,6 @@
 <?php
 
-require_once '../User.php';
+require_once 'User.php';
 
 class UserLogin extends User
 {
@@ -16,5 +16,4 @@ class UserLogin extends User
     }
 }
 
-$user_login = new UserLogin('Luca', 'Scandi', 40, 'email', 'pass', $credit_card_login);
-var_dump($user_login);
+$user_login = new UserLogin('Luca', 'Scandi', 40,  $credit_card_login, 'email', 'pass');

@@ -1,6 +1,7 @@
 <?php
 
-require 'CreditCard.php';
+require_once 'CreditCard.php';
+require_once 'Eat.php';
 class User
 {
     public $f_name;
@@ -21,8 +22,22 @@ class User
         if (($carta instanceof CreditCard) === false) return false;
         $this->carta = $carta;
     }
+
+    public function getCard()
+    {
+        return $this->carta;
+    }
+
+    public function buyProduct($cosa)
+    {
+        if ($this->getCard()->balance > $cosa) {
+            return 'puoi';
+        } else {
+            return 'NO';
+        };
+    }
 }
 
-$user = new User('Matteo', 'Filippini', 10, $credit_card);
+$user = new User('Matteo', 'Filippin', 33, $credit_card);
 
-var_dump($user);
+echo $user->buyProduct($cibo->getPrice());
