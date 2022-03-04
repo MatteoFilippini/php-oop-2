@@ -2,17 +2,22 @@
 
 class Product
 {
-    public $nome;
-    public $prezzo;
+    private $name;
+    private $price;
 
-    public function __construct($nome, $prezzo)
+    public function __construct($name, $price)
     {
-        $this->nome = $nome;
-        $this->prezzo = $prezzo;
+        $this->name = $name;
+        $this->price = $price;
     }
 
     public function getPrice()
     {
-        return $this->prezzo;
+        return $this->price;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 }

@@ -2,10 +2,10 @@
 
 class CreditCard
 {
-    public $num;
-    public $cvc;
-    public $s_date;
-    public $balance;
+    private $num;
+    private $cvc;
+    private $s_date;
+    private $balance;
 
     public function __construct($num, $cvc, $s_date, $balance)
     {
@@ -14,7 +14,14 @@ class CreditCard
         $this->s_date = $s_date;
         $this->balance = $balance;
     }
-}
 
-$credit_card = new CreditCard('432432423', '343', '24/04/2023', 1);
-$credit_card_login = new CreditCard('9999999', '343', '24/04/2023', 100);
+    public function getDate()
+    {
+        return $this->s_date;
+    }
+
+    public function getBalance()
+    {
+        return ($this->balance);
+    }
+}
