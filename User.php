@@ -34,7 +34,7 @@ class User
         return $this->f_name;
     }
 
-    public function setCreditCard($carta)
+    private function setCreditCard($carta)
     {
         if (($carta instanceof CreditCard) === false) return false;
         $this->carta = $carta;
@@ -42,12 +42,15 @@ class User
 
     public function buyProduct($prezzo_prodotto, $nome_prodotto, $credit_date)
     {
+        // se la proprieta login e true ha 20% di sconto
         if ($this->getLogin()) {
             $discount = $prezzo_prodotto * 20 / 100;
             $prezzo_prodotto -= $discount;
         }
-        if ($this->getCard()->getBalance() > $prezzo_prodotto) {
-            if ($credit_date >= 2022) {
+        // controllo saldo
+        if ($this->carta->getBalance() > $prezzo_prodotto) {
+            // controllo data scadenza carta
+            if ($this->carta->getDate() >= 2022) {
                 return 'Hai pagato ' . $prezzo_prodotto . ' euro' . ' per ' . $nome_prodotto;
             } else {
                 return 'Carta di credito scaduta';
