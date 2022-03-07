@@ -20,10 +20,10 @@ require_once 'CreditCard.php';
 require_once 'Eat.php';
 
 $credit_card = new CreditCard('432432423', '343', 2025, 100);
-$credit_card_login = new CreditCard('9999999', '343', 2000, 100);
+$credit_card_login = new CreditCard('9999999', '343', 2025, 100);
 
-$user = new User('Leonardo', 'Filippini', 33, $credit_card, $login = false);
-$user_login = new UserLogin('Luca', 'Scandi', 40,  $credit_card_login, 'email', 'pass', $login = true);
+$user = new User('Leonardo', 'Filippini', 33, $credit_card);
+$user_login = new UserLogin('Luca', 'Scandi', 40,  $credit_card_login, 'email', 'pass');
 
 $cibo = new Eat('croccantini', 10, 'cani', '2023');
 
@@ -41,7 +41,7 @@ $cibo = new Eat('croccantini', 10, 'cani', '2023');
 
 <body>
     <h3><?= 'Benvenuto ' . $user_login->getName(); ?></h3>
-    <p><?= $user_login->buyProduct($cibo->getPrice(), $cibo->getName(), $credit_card->getDate(), $user_login->getLogin()) ?></p>
+    <p><?= $user_login->buyProduct($cibo) ?></p>
     <p><?= 'Costano ' . $cibo->getPrice() . ' euro' ?></p>
 </body>
 

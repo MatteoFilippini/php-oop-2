@@ -5,18 +5,11 @@ class UserLogin extends User
 {
     private $email;
     private $pass;
-    private $discount;
 
-    public function __construct($f_name, $l_name, $age, $credit_card, $email, $pass, $login)
+    public function __construct($f_name, $l_name, $age, $credit_card, $email, $pass)
     {
-        parent::__construct($f_name, $l_name, $age, $credit_card, $login);
+        parent::__construct($f_name, $l_name, $age, $credit_card, true);
         $this->email = $email;
         $this->pass = $pass;
-        $this->discount = 20;
-    }
-
-    public function getDiscout()
-    {
-        return $this->discout;
     }
 }

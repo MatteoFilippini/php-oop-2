@@ -8,15 +8,15 @@ class User
     private $l_name;
     private $age;
     private $carta;
-    private $login;
+    private $is_register;
 
-    public function __construct($f_name, $l_name, $age, $carta, $login)
+    public function __construct($f_name, $l_name, $age, $carta, $is_register = false)
     {
         $this->f_name = $f_name;
         $this->l_name = $l_name;
         $this->age = $age;
-        $this->login = $login;
         $this->setCreditCard($carta);
+        $this->is_register = $is_register;
     }
 
     public function getCard()
@@ -24,10 +24,12 @@ class User
         return $this->carta;
     }
 
-    public function getLogin()
+    public function getRegister()
     {
-        return $this->login;
+        return $this->is_register;
     }
+
+
 
     public function getName()
     {
@@ -40,10 +42,16 @@ class User
         $this->carta = $carta;
     }
 
-    public function buyProduct($prezzo_prodotto, $nome_prodotto, $credit_date)
+
+
+
+
+    public function buyProduct($cibo)
     {
+        $prezzo_prodotto = $cibo->getPrice();
+
         // se la proprieta login e true ha 20% di sconto
-        if ($this->getLogin()) {
+        if ($this->getRegister()) {
             $discount = $prezzo_prodotto * 20 / 100;
             $prezzo_prodotto -= $discount;
         }
@@ -51,7 +59,7 @@ class User
         if ($this->carta->getBalance() > $prezzo_prodotto) {
             // controllo data scadenza carta
             if ($this->carta->getDate() >= 2022) {
-                return 'Hai pagato ' . $prezzo_prodotto . ' euro' . ' per ' . $nome_prodotto;
+                return 'Hai pagato ' . $prezzo_prodotto . ' euro' . ' per ' . $cibo->getName();
             } else {
                 return 'Carta di credito scaduta';
             }
